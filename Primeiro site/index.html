@@ -1,0 +1,134 @@
+<html>
+
+    <head>
+        <title>Nome?</title>
+        <meta charset="utf-8">
+        <!-- Icones -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" 
+        rel="stylesheet" />
+
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" 
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+        crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+
+    <body>
+       <!--Cabeçalho-->
+        <header>
+
+            <div class="btnAbre">
+                <span class="material-symbols-outlined">
+                    menu_open
+                </span>
+            </div>
+            
+            <nav class="menuLateral">
+                <div class="lateralMenu">Menu<span class="material-symbols-outlined btnFecha">
+                    close
+                    </span></div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="Categoria">Categorias<span class="material-symbols-outlined seta1">
+                        arrow_right
+                        </span></a>
+                        <ul class="ItensCategoria link" id="Categ">
+
+                        </ul>
+                    </li>
+                    <li id="filmes"><a href="#">Filmes</a></li>
+                    <li id="serie"><a href="#">Series</a></li>
+                </ul>
+
+            </nav>
+            <h1>Nome?</h1>
+        <script src="/assets/dados/menu.js"></script>
+        </header>
+
+       <!-- Catalogo de filmes -->
+
+        <div class="flex-container">
+
+            <div class="flex-container flex-catalogo" id="catalogo">
+                
+            </div>
+
+        </div> 
+        
+       <!-- rodape -->
+        <footer class="flex-footer">
+
+           <p><span class="bold">Alcides &copy;2022</span></p>
+           
+        </footer>
+    </body>
+
+    <script type="module">
+        import categorias from '/assets/dados/categoria.json' assert {type:'json'};
+        import catalogo from '/assets/dados/catalogo.json' assert {type:'json'};
+        import tipo from '/assets/dados/tipo.json' assert {type:'json'};
+        function popularCategoria()
+        {
+            let divMenu = document.getElementById('Categ');
+
+            for (let idx = 0; idx < categorias.length; idx++) 
+            {
+                let a = document.createElement('a');
+                a.className = 'link';
+                a.innerText = categorias[idx].descricao;
+
+                a.addEventListener('click', () => exibirCatalogo(categorias[idx].id));
+                divMenu.appendChild(a);
+            }         
+        }
+
+        function exibirCatalogo(categoriaId) 
+        {
+           // alert(categoriaId);
+
+            let filmes = catalogo.filter(filme =>{
+                return filme.categoriaId == categoriaId;
+            });
+
+            let divCatalogo = document.getElementById('catalogo');
+            divCatalogo.innerHTML = '';
+
+            filmes.forEach(filme=> {
+
+                let divCard = document.createElement('div');
+                divCard.className = 'flex-catalogo-card';
+                
+                let imgCartazFilme = document.createElement('img');
+                imgCartazFilme.className = 'cartaz-filme';
+                imgCartazFilme.src = filme.imagem;
+
+                let h4NomeFilme = document.createElement('h4');
+                h4NomeFilme.innerText = filme.descricao; + '<br/>';
+                h4NomeFilme.className = 'nome-filme';
+                h4NomeFilme.title = filme.descricao;
+
+
+                let h6AnoLancamento = document.createElement('h6');
+                h6AnoLancamento.innerText = filme.anoLancamento;
+
+                divCard.appendChild(imgCartazFilme);
+                divCard.appendChild(h4NomeFilme);
+                divCard.appendChild(h6AnoLancamento);
+
+                
+                divCatalogo.appendChild(divCard);
+
+
+            });
+        }
+ 
+
+        popularCategoria();
+
+
+        
+    </script>
+
+</html>

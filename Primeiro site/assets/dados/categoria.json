@@ -1,0 +1,7 @@
+[
+    {"id":1, "descricao": "Suspense"},
+    {"id":2, "descricao": "Drama"},
+    {"id":3, "descricao": "Aventura"},
+    {"id":4, "descricao": "Ação"},
+    {"id":5, "descricao": "Terror"}
+]
