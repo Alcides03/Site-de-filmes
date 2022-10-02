@@ -58,77 +58,22 @@
         </div> 
         
        <!-- rodape -->
-        <footer class="flex-footer">
+        <!-- <footer class="flex-footer"> 
 
            <p><span class="bold">Alcides &copy;2022</span></p>
            
-        </footer>
+        </footer>-->
+
+        <dialog id="dialogFilme">
+
+            <a id="lnkFecha" href="javascript:void(0)"><span class="material-symbols-outlined btnFecha2">
+                close
+                </span></a>
+            <video id="video" controls autoplay autofocus> </video>
+
+        </dialog>
     </body>
 
-    <script type="module">
-        import categorias from '/assets/dados/categoria.json' assert {type:'json'};
-        import catalogo from '/assets/dados/catalogo.json' assert {type:'json'};
-        import tipo from '/assets/dados/tipo.json' assert {type:'json'};
-        function popularCategoria()
-        {
-            let divMenu = document.getElementById('Categ');
-
-            for (let idx = 0; idx < categorias.length; idx++) 
-            {
-                let a = document.createElement('a');
-                a.className = 'link';
-                a.innerText = categorias[idx].descricao;
-
-                a.addEventListener('click', () => exibirCatalogo(categorias[idx].id));
-                divMenu.appendChild(a);
-            }         
-        }
-
-        function exibirCatalogo(categoriaId) 
-        {
-           // alert(categoriaId);
-
-            let filmes = catalogo.filter(filme =>{
-                return filme.categoriaId == categoriaId;
-            });
-
-            let divCatalogo = document.getElementById('catalogo');
-            divCatalogo.innerHTML = '';
-
-            filmes.forEach(filme=> {
-
-                let divCard = document.createElement('div');
-                divCard.className = 'flex-catalogo-card';
-                
-                let imgCartazFilme = document.createElement('img');
-                imgCartazFilme.className = 'cartaz-filme';
-                imgCartazFilme.src = filme.imagem;
-
-                let h4NomeFilme = document.createElement('h4');
-                h4NomeFilme.innerText = filme.descricao; + '<br/>';
-                h4NomeFilme.className = 'nome-filme';
-                h4NomeFilme.title = filme.descricao;
-
-
-                let h6AnoLancamento = document.createElement('h6');
-                h6AnoLancamento.innerText = filme.anoLancamento;
-
-                divCard.appendChild(imgCartazFilme);
-                divCard.appendChild(h4NomeFilme);
-                divCard.appendChild(h6AnoLancamento);
-
-                
-                divCatalogo.appendChild(divCard);
-
-
-            });
-        }
- 
-
-        popularCategoria();
-
-
-        
-    </script>
+    <script type="module" src="assets/js/script.js"></script>
 
 </html>

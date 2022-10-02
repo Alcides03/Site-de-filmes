@@ -60,4 +60,5 @@
     { "id": 48, "descricao": "O Poço", "anoLancamento": 2022, "categoriaId": 5, "imagem": "../assets/imagens/terror/oPoco.jpg", "urlVideo": "../assets/videos/terror/oPoco.mp4" },
     { "id": 49, "descricao": "O Que Ficou para Tras", "anoLancamento": 2022, "categoriaId": 5, "imagem": "../assets/imagens/terror/oQueFicoParaTras.jpg", "urlVideo": "../assets/videos/terror/oQueFicoParaTras.mp4" },
     { "id": 50, "descricao": "Rua do Medo3", "anoLancamento": 2022, "categoriaId": 5, "imagem": "../assets/imagens/terror/RuaDoMedo3.jpg", "urlVideo": "../assets/videos/terror/RuaDoMedo3.mp4" }
+
 ]
